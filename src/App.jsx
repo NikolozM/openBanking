@@ -1,12 +1,11 @@
 import { useState } from "react";
 import MainQuestions from "./components/MainQuestions";
 import SecondaryQuestions from "./components/SecondaryQuestions";
+import AdditionalQuestions from "./components/AdditionalQuestions";
 import Navbar from "./components/Navbar";
 
 export default function App() {
   const [sectionId, setSectionId] = useState(1);
-
-  console.log(sectionId);
 
   const renderComponent = (option) => {
     switch (option) {
@@ -14,6 +13,8 @@ export default function App() {
         return <MainQuestions />;
       case 2:
         return <SecondaryQuestions />;
+      case 3:
+        return <AdditionalQuestions />;
       default:
         return <MainQuestions />;
     }
@@ -25,7 +26,7 @@ export default function App() {
         sectionId={sectionId}
         setSectionId={setSectionId}
       />
-      <section className='bg-white w-full'>
+      <section className='bg-white w-full border border-blue-500 border-solid border-4 rounded-lg p-4'>
         {renderComponent(sectionId)}
       </section>
     </main>
