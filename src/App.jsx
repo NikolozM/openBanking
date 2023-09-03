@@ -5,16 +5,53 @@ import AdditionalQuestions from "./components/AdditionalQuestions";
 import Navbar from "./components/Navbar";
 
 export default function App() {
+  const [initState, setInitState] = useState(
+    {
+      debtorAccountIban: "",
+      debtorAccountCurrency: "",
+      instructedAmount: "",
+      intructedAmountCurrency: "",
+      creditorAccountIban: "",
+      creditorAccount: "",
+      creditorAccountOtherIdentification: "",
+    },
+  );
+console.log(initState)
+  const inputChange = (field, newValue) => {
+    setInitState((prevState) => ({
+      ...prevState,
+      [field]: newValue,
+    }));
+  };
+
   const [sectionId, setSectionId] = useState(1);
 
   const renderComponent = (option) => {
     switch (option) {
       case 1:
-        return <MainQuestions />;
+        return (
+          <MainQuestions
+            initState={initState}
+            setInitState={setInitState}
+            inputChange={inputChange}
+          />
+        );
       case 2:
-        return <SecondaryQuestions />;
+        return (
+          <SecondaryQuestions
+            initState={initState}
+            setInitState={setInitState}
+            inputChange={inputChange}
+          />
+        );
       case 3:
-        return <AdditionalQuestions />;
+        return (
+          <AdditionalQuestions
+            initState={initState}
+            setInitState={setInitState}
+            inputChange={inputChange}
+          />
+        );
       default:
         return <MainQuestions />;
     }

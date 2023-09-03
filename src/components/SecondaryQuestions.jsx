@@ -1,4 +1,4 @@
-const SecondaryQuestions = () => {
+const SecondaryQuestions = ({initState,inputChange}) => {
   return (
     <div className='flex'>
       <div className='flex flex-col flex-initial w-6/12'>
@@ -11,6 +11,13 @@ const SecondaryQuestions = () => {
           id='1'
           type='text'
           placeholder='შეიყვანეთ ტექსტი...'
+          value={initState.instructedAmount}
+          onChange={(e) =>
+            inputChange(
+              "instructedAmount",
+              e.target.value
+            )
+          }
         />
 
         {/* მიმღების მისამართი */}
@@ -23,6 +30,13 @@ const SecondaryQuestions = () => {
           id='2'
           type='text'
           placeholder='შეიყვანეთ ტექსტი...'
+          value={initState.instructedAmount}
+          onChange={(e) =>
+            inputChange(
+              "instructedAmount",
+              e.target.value
+            )
+          }
         />
       </div>
 
@@ -35,6 +49,13 @@ const SecondaryQuestions = () => {
           id='3'
           type='text'
           placeholder='შეიყვანეთ ტექსტი...'
+          value={initState.instructedAmount}
+          onChange={(e) =>
+            inputChange(
+              "instructedAmount",
+              e.target.value
+            )
+          }
         />
 
         <label className='label ml-8' htmlFor='inputField'>
@@ -45,6 +66,13 @@ const SecondaryQuestions = () => {
           id='4'
           type='text'
           placeholder='შეიყვანეთ ტექსტი...'
+          value={initState.creditorAccountIban}
+          onChange={(e) =>
+            inputChange(
+              "creditorAccountIban",
+              e.target.value
+            )
+          }
         />
       </div>
     </div>
