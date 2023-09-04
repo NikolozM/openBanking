@@ -23,7 +23,7 @@ const MainQuestions = ({
 
   console.log(initState);
   return (
-    <div className='flex'>
+    <div className='flex animate-smoothOpening'>
       <div className='flex flex-col flex-initial w-6/12'>
         <div className='divBorder'>
           Debtor Account

@@ -1,6 +1,6 @@
 const SecondaryQuestions = ({ initState, inputChange }) => {
   return (
-    <div className='flex'>
+    <div className='flex animate-smoothOpening'>
       <div className='flex flex-col flex-initial w-6/12'>
         <div className='divBorder'>
           <label className='label' htmlFor='11'>

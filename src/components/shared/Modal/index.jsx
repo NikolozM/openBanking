@@ -6,6 +6,7 @@ export const Modal = ({
   confirmation,
   input,
 }) => {
+  
   const [value, setValue] = useState("");
 
   const confirmButtonAction = () => {
