@@ -1,4 +1,8 @@
+import { Modal } from '../components/shared/Modal';
+import { useState } from 'react';
+
 const MainQuestions = ({ initState, inputChange }) => {
+  const [showModal, setShowModal] = useState(false);
   return (
     <div className='flex'>
       <div className='flex flex-col flex-initial w-6/12'>
@@ -11,7 +15,7 @@ const MainQuestions = ({ initState, inputChange }) => {
             className='input'
             id='1'
             type='text'
-            placeholder='შეიყვანეთ ტექსტი...'
+            placeholder='...'
             value={initState.debtorAccountIban}
             onChange={(e) => inputChange('debtorAccountIban', e.target.value)}
           />
@@ -22,7 +26,7 @@ const MainQuestions = ({ initState, inputChange }) => {
             className='input'
             id='2'
             type='text'
-            placeholder='შეიყვანეთ ტექსტი...'
+            placeholder='...'
             value={initState.debtorAccountCurrency}
             onChange={(e) => inputChange('debtorAccountCurrency', e.target.value)}
           />
@@ -37,7 +41,7 @@ const MainQuestions = ({ initState, inputChange }) => {
             className='input'
             id='3'
             type='text'
-            placeholder='შეიყვანეთ ტექსტი...'
+            placeholder='...'
             value={initState.instructedAmountAmount}
             onChange={(e) => inputChange('instructedAmountAmount', e.target.value)}
           />
@@ -48,7 +52,7 @@ const MainQuestions = ({ initState, inputChange }) => {
             className='input'
             id='4'
             type='text'
-            placeholder='შეიყვანეთ ტექსტი...'
+            placeholder='...'
             value={initState.intructedAmountCurrency}
             onChange={(e) => inputChange('intructedAmountCurrency', e.target.value)}
           />
@@ -58,81 +62,81 @@ const MainQuestions = ({ initState, inputChange }) => {
       <div className='flex-initial w-6/12'>
         <div className='divBorder'>
           Creditor Account
-          <label className='label ml-8' htmlFor='5'>
+          <label className='label' htmlFor='5'>
             Iban
           </label>
           <input
-            className='input ml-8'
+            className='input '
             id='5'
             type='text'
-            placeholder='შეიყვანეთ ტექსტი...'
+            placeholder='...'
             value={initState.creditorAccountIban}
             onChange={(e) => inputChange('creditorAccountIban', e.target.value)}
           />
-          <label className='label ml-8' htmlFor='6'>
+          <label className='label' htmlFor='6'>
             Currency
           </label>
           <input
-            className='input ml-8'
+            className='input'
             id='6'
             type='text'
-            placeholder='შეიყვანეთ ტექსტი...'
+            placeholder='...'
             value={initState.creditorAccountCurrency}
             onChange={(e) => inputChange('creditorAccountCurrency', e.target.value)}
           />
-          <label className='label ml-8' htmlFor='7'>
+          <label className='label' htmlFor='7'>
             Other Identification
           </label>
           <input
-            className='input ml-8'
+            className='input'
             id='7'
             type='text'
-            placeholder='შეიყვანეთ ტექსტი...'
+            placeholder='...'
             value={initState.creditorAccountOtherIdentification}
             onChange={(e) => inputChange('creditorAccountOtherIdentification', e.target.value)}
           />
         </div>
 
         <div className='divBorder'>
-          <label className='label ml-8' htmlFor='8'>
+          <label className='label' htmlFor='8'>
             Creditor Name
           </label>
           <input
-            className='input ml-8'
+            className='input'
             id='8'
             type='text'
-            placeholder='შეიყვანეთ ტექსტი...'
+            placeholder='...'
             value={initState.creditorName}
             onChange={(e) => inputChange('creditorName', e.target.value)}
           />
         </div>
         <div className='divBorder'>
-          <label className='label ml-8' htmlFor='9'>
+          <label className='label' htmlFor='9'>
             Remittance Information Unstructured
           </label>
           <input
-            className='input ml-8'
+            className='input'
             id='9'
             type='text'
-            placeholder='შეიყვანეთ ტექსტი...'
+            placeholder='...'
             value={initState.remittanceInformationUnstructured}
             onChange={(e) => inputChange('remittanceInformationUnstructured', e.target.value)}
           />
         </div>
         <div className='divBorder'>
-          <label className='label ml-8' htmlFor='10'>
+          <label className='label' htmlFor='10'>
             Remittance Information Unstructured Array
           </label>
-          <input
-            className='input ml-8'
+          <button
+            onClick={() => setShowModal(true)}
             id='10'
-            type='text'
-            placeholder='შეიყვანეთ ტექსტი...'
-            value={initState.remittanceInformationUnstructuredArray}
-            onChange={(e) => inputChange('remittanceInformationUnstructuredArray', e.target.value)}
-          />
+            className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded'
+          >
+            Add
+          </button>
         </div>
       </div>
+      <Modal showModal={showModal} setShowModal={setShowModal} />
     </div>
   );
 };

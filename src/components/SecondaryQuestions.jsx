@@ -10,7 +10,7 @@ const SecondaryQuestions = ({ initState, inputChange }) => {
             className='input'
             id='11'
             type='text'
-            placeholder='შეიყვანეთ ტექსტი...'
+            placeholder='...'
             value={initState.endToEndIdentification}
             onChange={(e) => inputChange('endToEndIdentification', e.target.value)}
           />
@@ -23,7 +23,7 @@ const SecondaryQuestions = ({ initState, inputChange }) => {
             className='input'
             id='12'
             type='text'
-            placeholder='შეიყვანეთ ტექსტი...'
+            placeholder='...'
             value={initState.instructionIdentification}
             onChange={(e) => inputChange('instructionIdentification', e.target.value)}
           />
@@ -36,7 +36,7 @@ const SecondaryQuestions = ({ initState, inputChange }) => {
             className='input'
             id='13'
             type='text'
-            placeholder='შეიყვანეთ ტექსტი...'
+            placeholder='...'
             value={initState.debtorName}
             onChange={(e) => inputChange('debtorName', e.target.value)}
           />
@@ -51,7 +51,7 @@ const SecondaryQuestions = ({ initState, inputChange }) => {
             className='input'
             id='14'
             type='text'
-            placeholder='შეიყვანეთ ტექსტი...'
+            placeholder='...'
             value={initState.debtorIdentificationPrivateId}
             onChange={(e) => inputChange('debtorIdentificationPrivateId', e.target.value)}
           />
@@ -62,7 +62,7 @@ const SecondaryQuestions = ({ initState, inputChange }) => {
             className='input'
             id='15'
             type='text'
-            placeholder='შეიყვანეთ ტექსტი...'
+            placeholder='...'
             value={initState.debtorIdentificationOrganisationId}
             onChange={(e) => inputChange('debtorIdentificationOrganisationId', e.target.value)}
           />
@@ -75,7 +75,7 @@ const SecondaryQuestions = ({ initState, inputChange }) => {
             className='input'
             id='16'
             type='text'
-            placeholder='შეიყვანეთ ტექსტი...'
+            placeholder='...'
             value={initState.ultimateDebtor}
             onChange={(e) => inputChange('ultimateDebtor', e.target.value)}
           />
@@ -90,7 +90,7 @@ const SecondaryQuestions = ({ initState, inputChange }) => {
             className='input'
             id='17'
             type='text'
-            placeholder='შეიყვანეთ ტექსტი...'
+            placeholder='...'
             value={initState.ultimateDebtorIdentificationPrivateId}
             onChange={(e) => inputChange('ultimateDebtorIdentificationPrivateId', e.target.value)}
           />
@@ -101,7 +101,7 @@ const SecondaryQuestions = ({ initState, inputChange }) => {
             className='input'
             id='18'
             type='text'
-            placeholder='შეიყვანეთ ტექსტი...'
+            placeholder='...'
             value={initState.ultimateDebtorIdentificationOrganisationId}
             onChange={(e) => inputChange('ultimateDebtorIdentificationOrganisationId', e.target.value)}
           />
@@ -117,7 +117,7 @@ const SecondaryQuestions = ({ initState, inputChange }) => {
             className='input'
             id='19'
             type='text'
-            placeholder='შეიყვანეთ ტექსტი...'
+            placeholder='...'
             value={initState.creditorAgent}
             onChange={(e) => inputChange('creditorAgent', e.target.value)}
           />
@@ -131,7 +131,7 @@ const SecondaryQuestions = ({ initState, inputChange }) => {
             className='input'
             id='20'
             type='text'
-            placeholder='შეიყვანეთ ტექსტი...'
+            placeholder='...'
             value={initState.creditorIdentificationPrivateId}
             onChange={(e) => inputChange('creditorIdentificationPrivateId', e.target.value)}
           />
@@ -142,7 +142,7 @@ const SecondaryQuestions = ({ initState, inputChange }) => {
             className='input'
             id='21'
             type='text'
-            placeholder='შეიყვანეთ ტექსტი...'
+            placeholder='...'
             value={initState.creditorIdentificationOrganisationId}
             onChange={(e) => inputChange('creditorIdentificationOrganisationId', e.target.value)}
           />
@@ -157,7 +157,7 @@ const SecondaryQuestions = ({ initState, inputChange }) => {
             className='input'
             id='22'
             type='text'
-            placeholder='შეიყვანეთ ტექსტი...'
+            placeholder='...'
             value={initState.creditorAddressStreetName}
             onChange={(e) => inputChange('creditorAddressStreetName', e.target.value)}
           />
@@ -168,7 +168,7 @@ const SecondaryQuestions = ({ initState, inputChange }) => {
             className='input'
             id='23'
             type='text'
-            placeholder='შეიყვანეთ ტექსტი...'
+            placeholder='...'
             value={initState.creditorAddressBuildingNumber}
             onChange={(e) => inputChange('creditorAddressBuildingNumber', e.target.value)}
           />
@@ -179,7 +179,7 @@ const SecondaryQuestions = ({ initState, inputChange }) => {
             className='input'
             id='24'
             type='text'
-            placeholder='შეიყვანეთ ტექსტი...'
+            placeholder='...'
             value={initState.creditorAddressTownName}
             onChange={(e) => inputChange('creditorAddressTownName', e.target.value)}
           />
@@ -190,7 +190,7 @@ const SecondaryQuestions = ({ initState, inputChange }) => {
             className='input'
             id='25'
             type='text'
-            placeholder='შეიყვანეთ ტექსტი...'
+            placeholder='...'
             value={initState.creditorAddressPostCode}
             onChange={(e) => inputChange('creditorAddressPostCode', e.target.value)}
           />
@@ -201,7 +201,7 @@ const SecondaryQuestions = ({ initState, inputChange }) => {
             className='input'
             id='26'
             type='text'
-            placeholder='შეიყვანეთ ტექსტი...'
+            placeholder='...'
             value={initState.creditorAddressCountry}
             onChange={(e) => inputChange('creditorAddressCountry', e.target.value)}
           />
@@ -215,7 +215,7 @@ const SecondaryQuestions = ({ initState, inputChange }) => {
             className='input'
             id='27'
             type='text'
-            placeholder='შეიყვანეთ ტექსტი...'
+            placeholder='...'
             value={initState.chargeBearer}
             onChange={(e) => inputChange('chargeBearer', e.target.value)}
           />
@@ -228,7 +228,7 @@ const SecondaryQuestions = ({ initState, inputChange }) => {
             className='input'
             id='28'
             type='text'
-            placeholder='შეიყვანეთ ტექსტი...'
+            placeholder='...'
             value={initState.instructionPriority}
             onChange={(e) => inputChange('instructionPriority', e.target.value)}
           />

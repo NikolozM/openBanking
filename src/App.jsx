@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import MainQuestions from './components/MainQuestions';
 import SecondaryQuestions from './components/SecondaryQuestions';
-import AdditionalQuestions from './components/AdditionalQuestions';
+import ShouldNotFilledFields from './components/ShouldNotFilledFields';
 import Navbar from './components/Navbar';
 
 export default function App() {
@@ -17,6 +17,7 @@ export default function App() {
     creditorName: '',
     remittanceInformationUnstructured: '',
     remittanceInformationUnstructuredArray: '',
+
     // SecondaryQuestions Section
     endToEndIdentification: '',
     instructionIdentification: '',
@@ -36,6 +37,28 @@ export default function App() {
     creditorAddressCountry: '',
     chargeBearer: '',
     instructionPriority: '',
+
+    // fields which should not be filled
+    debtorId: '',
+    exchangeRateInformationUnitCurrency: '',
+    exchangeRateInformationExchangeRate: '',
+    exchangeRateInformationContractIdentification: '',
+    exchangeRateInformationRateType: '',
+    currencyOfTransfer: '',
+    creditorId: '',
+    creditorNameAndAddress: '',
+    ultimateCreditor: '',
+    ultimateCreditorIdentificationPritaveId: '',
+    ultimateCreditorIdentificationOrganisationId: '',
+    purposeCode: '',
+    serviceLevel: '',
+    remittanceInformationStructuredReference: '',
+    remittanceInformationStructuredReferenceType: '',
+    remittanceInformationStructuredReferenceIssuer: '',
+    remittanceInformationStructuredArray: '',
+    additionalInformation: '',
+    requestedExecutionDate: '',
+    requestedExecutionTime: '',
   });
 
   const inputChange = (field, newValue) => {
@@ -54,7 +77,7 @@ export default function App() {
       case 2:
         return <SecondaryQuestions initState={initState} setInitState={setInitState} inputChange={inputChange} />;
       case 3:
-        return <AdditionalQuestions initState={initState} setInitState={setInitState} inputChange={inputChange} />;
+        return <ShouldNotFilledFields initState={initState} setInitState={setInitState} inputChange={inputChange} />;
       default:
         return <MainQuestions />;
     }

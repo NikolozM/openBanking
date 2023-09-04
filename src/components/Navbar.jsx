@@ -22,7 +22,7 @@ const Navbar = ({ sectionId, setSectionId }) => {
           sectionId === 3 && "border-b-2 border-blue-500"
         }`}
       >
-        <p onClick={() => setSectionId(3)}>Chubala</p>
+        <p onClick={() => setSectionId(3)}>ShouldNotFilledFields</p>
       </div>
     </section>
   );
