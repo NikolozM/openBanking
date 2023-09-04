@@ -16,7 +16,7 @@ export default function App() {
     creditorAccountOtherIdentification: '',
     creditorName: '',
     remittanceInformationUnstructured: '',
-    remittanceInformationUnstructuredArray: '',
+    remittanceInformationUnstructuredArray: [],
 
     // SecondaryQuestions Section
     endToEndIdentification: '',
