@@ -1,28 +1,17 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-export const Modal = ({
-  showModal,
-  setShowModal,
-  confirmation,
-  input,
-}) => {
-  
-  const [value, setValue] = useState("");
+export const Modal = ({ showModal, setShowModal, confirmation, input }) => {
+  const [value, setValue] = useState('');
 
   const confirmButtonAction = () => {
-    confirmation && confirmation(value, setValue),
-      setShowModal(false);
+    confirmation && confirmation(value, setValue), setShowModal(false);
   };
   return (
     <div>
-      {showModal && (
-        <div className='fixed inset-0 bg-black opacity-40 z-40'></div>
-      )}
+      {showModal && <div className='fixed inset-0 bg-black opacity-40 z-40'></div>}
       <div
         className={`fixed inset-0 flex items-start justify-center z-50 mt-40 ${
-          showModal
-            ? "opacity-100"
-            : "opacity-0 pointer-events-none"
+          showModal ? 'opacity-100' : 'opacity-0 pointer-events-none'
         } transition-opacity duration-300 ease-in-out`}
       >
         <div className='bg-white w-2/5 p-4 rounded shadow-lg'>

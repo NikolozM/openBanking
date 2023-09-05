@@ -119,6 +119,24 @@ const ShouldNotFilledFields = ({
           />
         </div>
         <div className='divBorder'>
+          <label className='label' htmlFor='50'>
+            Creditor Agent Name
+          </label>
+          <input
+            className='input'
+            id='50'
+            type='text'
+            placeholder='...'
+            value={initState.creditorAgentName}
+            onChange={(e) =>
+              inputChange(
+                "creditorAgentName",
+                e.target.value
+              )
+            }
+          />
+        </div>
+        <div className='divBorder'>
           <label className='label' htmlFor='35'>
             Creditor Id
           </label>

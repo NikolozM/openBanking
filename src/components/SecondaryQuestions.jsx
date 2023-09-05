@@ -209,7 +209,7 @@ const SecondaryQuestions = ({ initState, inputChange }) => {
 
         <div className='divBorder'>
           <label className='label' htmlFor='27'>
-            Creditor Agent
+            Charge Bearer
           </label>
           <input
             className='input'
@@ -222,7 +222,7 @@ const SecondaryQuestions = ({ initState, inputChange }) => {
         </div>
         <div className='divBorder'>
           <label className='label' htmlFor='28'>
-            Creditor Agent
+            Instruction Priority
           </label>
           <input
             className='input'

@@ -49,6 +49,7 @@ export default function App() {
     exchangeRateInformationContractIdentification: "",
     exchangeRateInformationRateType: "",
     currencyOfTransfer: "",
+    creditorAgentName:'',
     creditorId: "",
     creditorNameAndAddress: "",
     ultimateCreditor: "",
