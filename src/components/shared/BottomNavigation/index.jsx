@@ -1,9 +1,96 @@
 import { handleMakePostRequest, handleMakeForeignPostRequest } from '../../helpers/apiHelpers';
 
-const index = ({ setInitState, paymentTypeIndex, setPaymentTypeIndex }) => {
+const index = ({ initState, setInitState, paymentTypeIndex, setPaymentTypeIndex }) => {
   const handleSendRequest = async () => {
     const data = {
-      alo: '123',
+      additionalInformation: initState.additionalInformation,
+      chargeBearer: initState.chargeBearer,
+      creditorAccount: {
+        iban: initState.creditorAccountIban,
+        currency: initState.creditorAccountCurrency,
+        other: { identification: initState.creditorAccountOtherIdentification },
+      },
+      creditorAddress: {
+        streetName: initState.creditorAddressStreetName,
+        buildingNumber: initState.creditorAddressBuildingNumber,
+        townName: initState.creditorAddressTownName,
+        postCode: initState.creditorAddressPostCode,
+      },
+      creditorAgent: initState.creditorAgent,
+      creditorAgentName: initState.creditorAgentName,
+      creditorId: initState.creditorId,
+      creditorIdentification: {
+        organisationId: {
+          others: [{ identification: initState.creditorIdentificationOrganisationId }],
+        },
+        privateId: {
+          others: [{ identification: initState.creditorIdentificationPrivateId }],
+        },
+      },
+      creditorName: initState.creditorName,
+      creditorNameAndAddress: initState.creditorNameAndAddress,
+      currencyOfTransfer: initState.currencyOfTransfer,
+      debtorAccount: {
+        iban: initState.debtorAccountIban,
+        currency: initState.debtorAccountCurrency,
+        other: {},
+      },
+      debtorId: initState.debtorId,
+      debtorIdentification: {
+        organisationId: {
+          others: [{ identification: initState.debtorIdentificationOrganisationId }],
+        },
+        privateId: {
+          others: [{ identification: initState.debtorIdentificationPrivateId }],
+        },
+      },
+      debtorName: initState.debtorName,
+      endToEndIdentification: initState.endToEndIdentification,
+      exchangeRateInformation: {
+        contractIdentification: initState.exchangeRateInformationContractIdentification,
+        exchangeRate: initState.exchangeRateInformationExchangeRate,
+        rateType: initState.exchangeRateInformationRateType,
+        unitCurrency: initState.exchangeRateInformationUnitCurrency,
+      },
+      instructedAmount: {
+        amount: initState.instructedAmountAmount,
+        currency: initState.intructedAmountCurrency,
+      },
+      instructionIdentification: initState.instructionIdentification,
+      instructionPriority: initState.instructionPriority,
+      purposeCode: initState.purposeCode,
+      remittanceInformationStructured: {
+        reference: initState.remittanceInformationStructuredReference,
+        referenceIssuer: initState.remittanceInformationStructuredReferenceIssuer,
+        referenceType: initState.remittanceInformationStructuredReferenceType,
+      },
+
+      // aq chasasmelia remittanceInformationStructuredArray
+
+      remittanceInformationUnstructured: initState.remittanceInformationUnstructured,
+      remittanceInformationUnstructuredArray: initState.remittanceInformationUnstructuredArray,
+      requestedExecutionDate: initState.requestedExecutionDate,
+      requestedExecutionTime: initState.requestedExecutionTime,
+      serviceLevel: initState.serviceLevel,
+      ultimateCreditor: initState.ultimateCreditor,
+
+      ultimateCreditorIdentification: {
+        organisationId: {
+          others: [{ identification: initState.ultimateCreditorIdentificationOrganisationId }],
+        },
+        privateId: {
+          others: [{ identification: initState.ultimateCreditorIdentificationPritaveId }],
+        },
+      },
+      ultimateDebtor: initState.ultimateDebtor,
+      ultimateDebtorIdentification: {
+        organisationId: {
+          others: [{ identification: initState.ultimateDebtorIdentificationOrganisationId }],
+        },
+        privateId: {
+          others: [{ identification: initState.ultimateDebtorIdentificationPrivateId }],
+        },
+      },
     };
 
     const response = paymentTypeIndex === 2 ? await handleMakeForeignPostRequest(data) : handleMakePostRequest(data);
