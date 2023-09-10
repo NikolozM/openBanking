@@ -1,7 +1,13 @@
+import {useState} from 'react'
 import { handleMakePostRequest, handleMakeForeignPostRequest } from '../../helpers/apiHelpers';
 
-const index = ({ initState, setInitState, paymentTypeIndex, setPaymentTypeIndex }) => {
-  const handleSendRequest = async () => {
+const BottomNavigation = ({ initState, setInitState, paymentTypeIndex, setPaymentTypeIndex }) => {
+
+  // only Bulkpayments should be in array, so we store it only this time
+  const [bulkpaymentarray, setBulkPaymentArray] = useState([])
+
+  // build data for backend 
+  const makeData = () => {
     const data = {
       additionalInformation: initState.additionalInformation,
       chargeBearer: initState.chargeBearer,
@@ -92,15 +98,18 @@ const index = ({ initState, setInitState, paymentTypeIndex, setPaymentTypeIndex 
         },
       },
     };
+    return data
+  }
 
-    const response = paymentTypeIndex === 2 ? await handleMakeForeignPostRequest(data) : handleMakePostRequest(data);
-
+  const handleSendRequest = async () => {
+    const response = paymentTypeIndex === 2 ? await handleMakeForeignPostRequest(makeData()) : handleMakePostRequest(makeData());
     if (response) {
       console.log(response);
     }
   };
 
   const clickBudgetPayment = () => {
+    setBulkPaymentArray([])
     setPaymentTypeIndex(1);
     setInitState({
       // MainQuestions Section
@@ -160,6 +169,7 @@ const index = ({ initState, setInitState, paymentTypeIndex, setPaymentTypeIndex 
     });
   };
   const clickForeignPayment = () => {
+    setBulkPaymentArray([])
     setPaymentTypeIndex(2);
     setInitState({
       // MainQuestions Section
@@ -338,6 +348,12 @@ const index = ({ initState, setInitState, paymentTypeIndex, setPaymentTypeIndex 
     });
   };
 
+  const addBulkPaymentInArray = () => {
+    setBulkPaymentArray((prev) => [...prev, makeData()])
+  }
+
+  console.log(bulkpaymentarray)
+
   return (
     <div className='w-full mt-2 flex justify-around mb-8'>
       <button
@@ -352,12 +368,15 @@ const index = ({ initState, setInitState, paymentTypeIndex, setPaymentTypeIndex 
       >
         Foreign
       </button>
+      <div className='relative'>
       <button
-        onClick={clickBulkPayment}
+        onClick={paymentTypeIndex === 3 ? addBulkPaymentInArray : clickBulkPayment}
         className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded'
       >
-        Bulk
+        {paymentTypeIndex === 3 ? 'Add Bulk Item' : 'Bulk'}
       </button>
+      {paymentTypeIndex === 3  && <span className="absolute bottom-4 left-32 bg-red-500 text-white w-5 h-5 flex items-center justify-center rounded-full">{bulkpaymentarray.length}</span>}
+      </div>
       <button onClick={clearState} className='bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-4 rounded'>
         Clear
       </button>
@@ -371,4 +390,4 @@ const index = ({ initState, setInitState, paymentTypeIndex, setPaymentTypeIndex 
   );
 };
 
-export default index;
+export default BottomNavigation;
