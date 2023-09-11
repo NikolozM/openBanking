@@ -21,6 +21,7 @@ const BottomNavigation = ({ initState, setInitState, paymentTypeIndex, setPaymen
         buildingNumber: initState.creditorAddressBuildingNumber,
         townName: initState.creditorAddressTownName,
         postCode: initState.creditorAddressPostCode,
+        country: initState.creditorAddressCountry
       },
       creditorAgent: initState.creditorAgent,
       creditorAgentName: initState.creditorAgentName,
