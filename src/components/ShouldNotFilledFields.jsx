@@ -1,9 +1,6 @@
-import { useState } from "react";
-import { Modal } from "./shared/Modal";
-const ShouldNotFilledFields = ({
-  initState,
-  inputChange,
-}) => {
+import { useState } from 'react';
+import { Modal } from './shared/Modal';
+const ShouldNotFilledFields = ({ initState, inputChange }) => {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -19,9 +16,7 @@ const ShouldNotFilledFields = ({
             type='text'
             placeholder='...'
             value={initState.debtorId}
-            onChange={(e) =>
-              inputChange("debtorId", e.target.value)
-            }
+            onChange={(e) => inputChange('debtorId', e.target.value)}
           />
         </div>
 
@@ -35,15 +30,8 @@ const ShouldNotFilledFields = ({
             id='30'
             type='text'
             placeholder='...'
-            value={
-              initState.exchangeRateInformationUnitCurrency
-            }
-            onChange={(e) =>
-              inputChange(
-                "exchangeRateInformationUnitCurrency",
-                e.target.value
-              )
-            }
+            value={initState.exchangeRateInformationUnitCurrency}
+            onChange={(e) => inputChange('exchangeRateInformationUnitCurrency', e.target.value)}
           />
           <label className='label' htmlFor='31'>
             Exchange Rate
@@ -53,15 +41,8 @@ const ShouldNotFilledFields = ({
             id='31'
             type='text'
             placeholder='...'
-            value={
-              initState.exchangeRateInformationExchangeRate
-            }
-            onChange={(e) =>
-              inputChange(
-                "exchangeRateInformationExchangeRate",
-                e.target.value
-              )
-            }
+            value={initState.exchangeRateInformationExchangeRate}
+            onChange={(e) => inputChange('exchangeRateInformationExchangeRate', e.target.value)}
           />
           <label className='label' htmlFor='32'>
             Contract Identification
@@ -71,15 +52,8 @@ const ShouldNotFilledFields = ({
             id='32'
             type='text'
             placeholder='...'
-            value={
-              initState.exchangeRateInformationContractIdentification
-            }
-            onChange={(e) =>
-              inputChange(
-                "exchangeRateInformationContractIdentification",
-                e.target.value
-              )
-            }
+            value={initState.exchangeRateInformationContractIdentification}
+            onChange={(e) => inputChange('exchangeRateInformationContractIdentification', e.target.value)}
           />
           <label className='label' htmlFor='33'>
             Rate type
@@ -89,15 +63,8 @@ const ShouldNotFilledFields = ({
             id='33'
             type='text'
             placeholder='...'
-            value={
-              initState.exchangeRateInformationRateType
-            }
-            onChange={(e) =>
-              inputChange(
-                "exchangeRateInformationRateType",
-                e.target.value
-              )
-            }
+            value={initState.exchangeRateInformationRateType}
+            onChange={(e) => inputChange('exchangeRateInformationRateType', e.target.value)}
           />
         </div>
         <div className='divBorder'>
@@ -110,12 +77,7 @@ const ShouldNotFilledFields = ({
             type='text'
             placeholder='...'
             value={initState.currencyOfTransfer}
-            onChange={(e) =>
-              inputChange(
-                "currencyOfTransfer",
-                e.target.value
-              )
-            }
+            onChange={(e) => inputChange('currencyOfTransfer', e.target.value)}
           />
         </div>
         <div className='divBorder'>
@@ -128,12 +90,7 @@ const ShouldNotFilledFields = ({
             type='text'
             placeholder='...'
             value={initState.creditorAgentName}
-            onChange={(e) =>
-              inputChange(
-                "creditorAgentName",
-                e.target.value
-              )
-            }
+            onChange={(e) => inputChange('creditorAgentName', e.target.value)}
           />
         </div>
         <div className='divBorder'>
@@ -146,9 +103,7 @@ const ShouldNotFilledFields = ({
             type='text'
             placeholder='...'
             value={initState.creditorId}
-            onChange={(e) =>
-              inputChange("creditorId", e.target.value)
-            }
+            onChange={(e) => inputChange('creditorId', e.target.value)}
           />
         </div>
         <div className='divBorder'>
@@ -161,12 +116,7 @@ const ShouldNotFilledFields = ({
             type='text'
             placeholder='...'
             value={initState.creditorNameAndAddress}
-            onChange={(e) =>
-              inputChange(
-                "creditorNameAndAddress",
-                e.target.value
-              )
-            }
+            onChange={(e) => inputChange('creditorNameAndAddress', e.target.value)}
           />
         </div>
         <div className='divBorder'>
@@ -179,12 +129,7 @@ const ShouldNotFilledFields = ({
             type='text'
             placeholder='...'
             value={initState.ultimateCreditor}
-            onChange={(e) =>
-              inputChange(
-                "ultimateCreditor",
-                e.target.value
-              )
-            }
+            onChange={(e) => inputChange('ultimateCreditor', e.target.value)}
           />
         </div>
       </div>
@@ -200,15 +145,8 @@ const ShouldNotFilledFields = ({
             id='38'
             type='text'
             placeholder='...'
-            value={
-              initState.ultimateCreditorIdentificationPritaveId
-            }
-            onChange={(e) =>
-              inputChange(
-                "ultimateCreditorIdentificationPritaveId",
-                e.target.value
-              )
-            }
+            value={initState.ultimateCreditorIdentificationPritaveId}
+            onChange={(e) => inputChange('ultimateCreditorIdentificationPritaveId', e.target.value)}
           />
           <label className='label' htmlFor='39'>
             Organisation Id
@@ -218,15 +156,8 @@ const ShouldNotFilledFields = ({
             id='39'
             type='text'
             placeholder='...'
-            value={
-              initState.ultimateCreditorIdentificationOrganisationId
-            }
-            onChange={(e) =>
-              inputChange(
-                "ultimateCreditorIdentificationOrganisationId",
-                e.target.value
-              )
-            }
+            value={initState.ultimateCreditorIdentificationOrganisationId}
+            onChange={(e) => inputChange('ultimateCreditorIdentificationOrganisationId', e.target.value)}
           />
         </div>
 
@@ -240,9 +171,7 @@ const ShouldNotFilledFields = ({
             type='text'
             placeholder='...'
             value={initState.purposeCode}
-            onChange={(e) =>
-              inputChange("purposeCode", e.target.value)
-            }
+            onChange={(e) => inputChange('purposeCode', e.target.value)}
           />
         </div>
 
@@ -256,9 +185,7 @@ const ShouldNotFilledFields = ({
             type='text'
             placeholder='...'
             value={initState.serviceLevel}
-            onChange={(e) =>
-              inputChange("serviceLevel", e.target.value)
-            }
+            onChange={(e) => inputChange('serviceLevel', e.target.value)}
           />
         </div>
 
@@ -272,15 +199,8 @@ const ShouldNotFilledFields = ({
             id='42'
             type='text'
             placeholder='...'
-            value={
-              initState.remittanceInformationStructuredReference
-            }
-            onChange={(e) =>
-              inputChange(
-                "remittanceInformationStructuredReference",
-                e.target.value
-              )
-            }
+            value={initState.remittanceInformationStructuredReference}
+            onChange={(e) => inputChange('remittanceInformationStructuredReference', e.target.value)}
           />
           <label className='label' htmlFor='43'>
             Reference Type
@@ -290,15 +210,8 @@ const ShouldNotFilledFields = ({
             id='43'
             type='text'
             placeholder='...'
-            value={
-              initState.remittanceInformationStructuredReferenceType
-            }
-            onChange={(e) =>
-              inputChange(
-                "remittanceInformationStructuredReferenceType",
-                e.target.value
-              )
-            }
+            value={initState.remittanceInformationStructuredReferenceType}
+            onChange={(e) => inputChange('remittanceInformationStructuredReferenceType', e.target.value)}
           />
           <label className='label' htmlFor='44'>
             Reference Issuer
@@ -308,15 +221,8 @@ const ShouldNotFilledFields = ({
             id='44'
             type='text'
             placeholder='...'
-            value={
-              initState.remittanceInformationStructuredReferenceIssuer
-            }
-            onChange={(e) =>
-              inputChange(
-                "remittanceInformationStructuredReferenceIssuer",
-                e.target.value
-              )
-            }
+            value={initState.remittanceInformationStructuredReferenceIssuer}
+            onChange={(e) => inputChange('remittanceInformationStructuredReferenceIssuer', e.target.value)}
           />
         </div>
 
@@ -327,7 +233,7 @@ const ShouldNotFilledFields = ({
           <button
             onClick={() => setShowModal(true)}
             id='45'
-            className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded'
+            className='bg-button2 hover:bg-button2Hover text-white font-bold py-1 px-2 rounded'
           >
             Add
           </button>
@@ -342,12 +248,7 @@ const ShouldNotFilledFields = ({
             type='text'
             placeholder='...'
             value={initState.additionalInformation}
-            onChange={(e) =>
-              inputChange(
-                "additionalInformation",
-                e.target.value
-              )
-            }
+            onChange={(e) => inputChange('additionalInformation', e.target.value)}
           />
         </div>
         <div className='divBorder'>
@@ -360,12 +261,7 @@ const ShouldNotFilledFields = ({
             type='text'
             placeholder='...'
             value={initState.requestedExecutionDate}
-            onChange={(e) =>
-              inputChange(
-                "requestedExecutionDate",
-                e.target.value
-              )
-            }
+            onChange={(e) => inputChange('requestedExecutionDate', e.target.value)}
           />
         </div>
         <div className='divBorder'>
@@ -378,19 +274,11 @@ const ShouldNotFilledFields = ({
             type='text'
             placeholder='...'
             value={initState.requestedExecutionTime}
-            onChange={(e) =>
-              inputChange(
-                "requestedExecutionTime",
-                e.target.value
-              )
-            }
+            onChange={(e) => inputChange('requestedExecutionTime', e.target.value)}
           />
         </div>
       </div>
-      <Modal
-        showModal={showModal}
-        setShowModal={setShowModal}
-      />
+      <Modal showModal={showModal} setShowModal={setShowModal} />
     </div>
   );
 };

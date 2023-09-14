@@ -1,23 +1,16 @@
-import { Modal } from "../components/shared/Modal";
-import { useState } from "react";
+import { Modal } from '../components/shared/Modal';
+import { useState } from 'react';
 
-const MainQuestions = ({
-  initState,
-  setInitState,
-  inputChange,
-}) => {
+const MainQuestions = ({ initState, setInitState, inputChange }) => {
   const [showModal, setShowModal] = useState(false);
 
   const addUnstructuredArrayInfo = (value, setValue) => {
     if (value) {
       setInitState((prev) => ({
         ...prev,
-        remittanceInformationUnstructuredArray: [
-          ...prev.remittanceInformationUnstructuredArray,
-          value,
-        ],
+        remittanceInformationUnstructuredArray: [...prev.remittanceInformationUnstructuredArray, value],
       }));
-      setValue("");
+      setValue('');
     }
   };
 
@@ -36,12 +29,7 @@ const MainQuestions = ({
             type='text'
             placeholder='...'
             value={initState.debtorAccountIban}
-            onChange={(e) =>
-              inputChange(
-                "debtorAccountIban",
-                e.target.value
-              )
-            }
+            onChange={(e) => inputChange('debtorAccountIban', e.target.value)}
           />
           <label className='label' htmlFor='2'>
             Currency
@@ -52,12 +40,7 @@ const MainQuestions = ({
             type='text'
             placeholder='...'
             value={initState.debtorAccountCurrency}
-            onChange={(e) =>
-              inputChange(
-                "debtorAccountCurrency",
-                e.target.value
-              )
-            }
+            onChange={(e) => inputChange('debtorAccountCurrency', e.target.value)}
           />
         </div>
 
@@ -72,12 +55,7 @@ const MainQuestions = ({
             type='text'
             placeholder='...'
             value={initState.instructedAmountAmount}
-            onChange={(e) =>
-              inputChange(
-                "instructedAmountAmount",
-                e.target.value
-              )
-            }
+            onChange={(e) => inputChange('instructedAmountAmount', e.target.value)}
           />
           <label className='label' htmlFor='4'>
             Currency
@@ -88,12 +66,7 @@ const MainQuestions = ({
             type='text'
             placeholder='...'
             value={initState.intructedAmountCurrency}
-            onChange={(e) =>
-              inputChange(
-                "intructedAmountCurrency",
-                e.target.value
-              )
-            }
+            onChange={(e) => inputChange('intructedAmountCurrency', e.target.value)}
           />
         </div>
       </div>
@@ -110,12 +83,7 @@ const MainQuestions = ({
             type='text'
             placeholder='...'
             value={initState.creditorAccountIban}
-            onChange={(e) =>
-              inputChange(
-                "creditorAccountIban",
-                e.target.value
-              )
-            }
+            onChange={(e) => inputChange('creditorAccountIban', e.target.value)}
           />
           <label className='label' htmlFor='6'>
             Currency
@@ -126,12 +94,7 @@ const MainQuestions = ({
             type='text'
             placeholder='...'
             value={initState.creditorAccountCurrency}
-            onChange={(e) =>
-              inputChange(
-                "creditorAccountCurrency",
-                e.target.value
-              )
-            }
+            onChange={(e) => inputChange('creditorAccountCurrency', e.target.value)}
           />
           <label className='label' htmlFor='7'>
             Other Identification
@@ -141,15 +104,8 @@ const MainQuestions = ({
             id='7'
             type='text'
             placeholder='...'
-            value={
-              initState.creditorAccountOtherIdentification
-            }
-            onChange={(e) =>
-              inputChange(
-                "creditorAccountOtherIdentification",
-                e.target.value
-              )
-            }
+            value={initState.creditorAccountOtherIdentification}
+            onChange={(e) => inputChange('creditorAccountOtherIdentification', e.target.value)}
           />
         </div>
 
@@ -163,9 +119,7 @@ const MainQuestions = ({
             type='text'
             placeholder='...'
             value={initState.creditorName}
-            onChange={(e) =>
-              inputChange("creditorName", e.target.value)
-            }
+            onChange={(e) => inputChange('creditorName', e.target.value)}
           />
         </div>
         <div className='divBorder'>
@@ -177,45 +131,31 @@ const MainQuestions = ({
             id='9'
             type='text'
             placeholder='...'
-            value={
-              initState.remittanceInformationUnstructured
-            }
-            onChange={(e) =>
-              inputChange(
-                "remittanceInformationUnstructured",
-                e.target.value
-              )
-            }
+            value={initState.remittanceInformationUnstructured}
+            onChange={(e) => inputChange('remittanceInformationUnstructured', e.target.value)}
           />
         </div>
         <div className='divBorder'>
           <label className='label' htmlFor='10'>
             Remittance Information Unstructured Array
           </label>
-          {initState.remittanceInformationUnstructuredArray.map(
-            (item, index) => (
-              <p className='label' key={`item-${index}`}>
-                {index + 1}
-                {") "}
-                {item}
-              </p>
-            )
-          )}
+          {initState.remittanceInformationUnstructuredArray.map((item, index) => (
+            <p className='label' key={`item-${index}`}>
+              {index + 1}
+              {') '}
+              {item}
+            </p>
+          ))}
           <button
             onClick={() => setShowModal(true)}
             id='10'
-            className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded'
+            className='bg-button2 hover:bg-button2Hover text-white font-bold py-1 px-2 rounded'
           >
             Add
           </button>
         </div>
       </div>
-      <Modal
-        showModal={showModal}
-        setShowModal={setShowModal}
-        confirmation={addUnstructuredArrayInfo}
-        input
-      />
+      <Modal showModal={showModal} setShowModal={setShowModal} confirmation={addUnstructuredArrayInfo} input />
     </div>
   );
 };
