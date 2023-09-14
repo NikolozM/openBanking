@@ -1,9 +1,129 @@
 import { useState } from 'react';
-import { handleMakePostRequest, handleMakeForeignPostRequest } from '../../helpers/apiHelpers';
+import { Modal } from '../RedirectModal';
+import {
+  handleMakePostRequest,
+  handleMakeForeignPostRequest,
+  handleMakeBulkPostRequest,
+} from '../../helpers/apiHelpers';
 
-const BottomNavigation = ({ initState, setInitState, paymentTypeIndex, setPaymentTypeIndex }) => {
+const BottomNavigation = ({ initState, setInitState, paymentTypeIndex, setPaymentTypeIndex, setLoad }) => {
   // only Bulkpayments should be in array, so we store it only this time
   const [bulkpaymentarray, setBulkPaymentArray] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+
+  const [testLink, setTestLink] = useState(null);
+
+  const makeDataForBulk = () => {
+    const data = {
+      batchBookingPreferred: true,
+      debtorAccount: {
+        iban: 'GE61PC0133600100071105',
+        currency: 'GEL',
+      },
+      requestedExecutionDate: '2023-09-14',
+      payments: bulkpaymentarray,
+    };
+    return data;
+  };
+
+  const makeBulkData = () => {
+    const data = {
+      additionalInformation: initState.additionalInformation,
+      chargeBearer: initState.chargeBearer,
+      creditorAccount: {
+        iban: initState.creditorAccountIban,
+        currency: initState.creditorAccountCurrency,
+        other: { identification: initState.creditorAccountOtherIdentification },
+      },
+      creditorAddress: {
+        streetName: initState.creditorAddressStreetName,
+        buildingNumber: initState.creditorAddressBuildingNumber,
+        townName: initState.creditorAddressTownName,
+        postCode: initState.creditorAddressPostCode,
+        country: initState.creditorAddressCountry,
+      },
+      creditorAgent: initState.creditorAgent,
+      creditorAgentName: initState.creditorAgentName,
+      creditorId: initState.creditorId,
+      creditorIdentification: {
+        organisationId: {
+          others: [{ identification: initState.creditorIdentificationOrganisationId }],
+        },
+        privateId: {
+          others: [{ identification: initState.creditorIdentificationPrivateId }],
+        },
+      },
+      creditorName: initState.creditorName,
+      creditorNameAndAddress: initState.creditorNameAndAddress,
+      currencyOfTransfer: initState.currencyOfTransfer,
+
+      debtorId: initState.debtorId,
+
+      // debtorAccount: {
+      //   iban: initState.debtorAccountIban,
+      //   currency: initState.debtorAccountCurrency,
+      //   other: {},
+      // },
+
+      debtorIdentification: {
+        organisationId: {
+          others: [{ identification: initState.debtorIdentificationOrganisationId }],
+        },
+        privateId: {
+          others: [{ identification: initState.debtorIdentificationPrivateId }],
+        },
+      },
+
+      debtorName: initState.debtorName,
+      endToEndIdentification: initState.endToEndIdentification,
+      exchangeRateInformation: {
+        contractIdentification: initState.exchangeRateInformationContractIdentification,
+        exchangeRate: initState.exchangeRateInformationExchangeRate,
+        rateType: initState.exchangeRateInformationRateType,
+        unitCurrency: initState.exchangeRateInformationUnitCurrency,
+      },
+      instructedAmount: {
+        amount: initState.instructedAmountAmount,
+        currency: initState.intructedAmountCurrency,
+      },
+      instructionIdentification: initState.instructionIdentification,
+      instructionPriority: initState.instructionPriority,
+      purposeCode: initState.purposeCode,
+      remittanceInformationStructured: {
+        reference: initState.remittanceInformationStructuredReference,
+        referenceIssuer: initState.remittanceInformationStructuredReferenceIssuer,
+        referenceType: initState.remittanceInformationStructuredReferenceType,
+      },
+
+      // aq chasasmelia remittanceInformationStructuredArray
+
+      remittanceInformationUnstructured: initState.remittanceInformationUnstructured,
+      remittanceInformationUnstructuredArray: initState.remittanceInformationUnstructuredArray,
+      requestedExecutionDate: initState.requestedExecutionDate,
+      requestedExecutionTime: initState.requestedExecutionTime,
+      serviceLevel: initState.serviceLevel,
+      ultimateCreditor: initState.ultimateCreditor,
+
+      ultimateCreditorIdentification: {
+        organisationId: {
+          others: [{ identification: initState.ultimateCreditorIdentificationOrganisationId }],
+        },
+        privateId: {
+          others: [{ identification: initState.ultimateCreditorIdentificationPritaveId }],
+        },
+      },
+      ultimateDebtor: initState.ultimateDebtor,
+      ultimateDebtorIdentification: {
+        organisationId: {
+          others: [{ identification: initState.ultimateDebtorIdentificationOrganisationId }],
+        },
+        privateId: {
+          others: [{ identification: initState.ultimateDebtorIdentificationPrivateId }],
+        },
+      },
+    };
+    return data;
+  };
 
   // build data for backend
   const makeData = () => {
@@ -102,10 +222,40 @@ const BottomNavigation = ({ initState, setInitState, paymentTypeIndex, setPaymen
   };
 
   const handleSendRequest = async () => {
-    const response =
-      paymentTypeIndex === 2 ? await handleMakeForeignPostRequest(makeData()) : handleMakePostRequest(makeData());
-    if (response) {
-      console.log(response);
+    let response = undefined;
+    if (paymentTypeIndex === 1) {
+      setLoad(true);
+      response = handleMakePostRequest(
+        makeData(),
+        (data) => {
+          setLoad(false);
+          setTestLink(data.paymentId);
+          setShowModal(true);
+        },
+        () => setLoad(false)
+      );
+    } else if (paymentTypeIndex === 2) {
+      setLoad(true);
+      response = await handleMakeForeignPostRequest(
+        makeData(),
+        (data) => {
+          setLoad(false);
+          setTestLink(data.paymentId);
+          setShowModal(true);
+        },
+        () => setLoad(false)
+      );
+    } else if (paymentTypeIndex === 3) {
+      setLoad(true);
+      response = await handleMakeBulkPostRequest(
+        makeDataForBulk(),
+        (data) => {
+          setLoad(false);
+          setTestLink(data.paymentId);
+          setShowModal(true);
+        },
+        () => setLoad(false)
+      );
     }
   };
 
@@ -234,19 +384,19 @@ const BottomNavigation = ({ initState, setInitState, paymentTypeIndex, setPaymen
     setPaymentTypeIndex(3);
     setInitState({
       // MainQuestions Section
-      debtorAccountIban: 'GE12IPC198888777345',
+      debtorAccountIban: 'GE61PC0133600100071166',
       debtorAccountCurrency: 'GEL',
-      instructedAmountAmount: '1200000',
-      intructedAmountCurrency: 'USD',
-      creditorAccountIban: 'GE170PCB123112333322',
-      creditorAccountCurrency: 'EUR',
-      creditorAccountOtherIdentification: '12IBCBLL',
-      creditorName: 'Nuciko',
-      remittanceInformationUnstructured: '',
+      instructedAmountAmount: '7000.00',
+      intructedAmountCurrency: 'GEL',
+      creditorAccountIban: 'GE61TB7885036010300009',
+      creditorAccountCurrency: 'GEL',
+      creditorAccountOtherIdentification: '',
+      creditorName: 'Nia Salukvadze',
+      remittanceInformationUnstructured: 'ნაშთის გადატანა',
       remittanceInformationUnstructuredArray: [],
 
       // SecondaryQuestions Section
-      endToEndIdentification: '',
+      endToEndIdentification: '500',
       instructionIdentification: '',
       debtorName: '',
       debtorIdentificationPrivateId: '',
@@ -254,16 +404,16 @@ const BottomNavigation = ({ initState, setInitState, paymentTypeIndex, setPaymen
       ultimateDebtor: '',
       ultimateDebtorIdentificationPrivateId: '',
       ultimateDebtorIdentificationOrganisationId: '',
-      creditorAgent: '',
+      creditorAgent: 'TBCBGE22',
       creditorIdentificationPrivateId: '',
       creditorIdentificationOrganisationId: '',
-      creditorAddressStreetName: '',
-      creditorAddressBuildingNumber: '',
-      creditorAddressTownName: '',
+      creditorAddressStreetName: 'Kazbegi',
+      creditorAddressBuildingNumber: '12',
+      creditorAddressTownName: 'Tbilisi',
       creditorAddressPostCode: '',
-      creditorAddressCountry: '',
-      chargeBearer: '',
-      instructionPriority: '',
+      creditorAddressCountry: 'Georgia',
+      chargeBearer: 'DEBT',
+      instructionPriority: 'NORM',
 
       // fields which should not be filled
       debtorId: '',
@@ -350,10 +500,8 @@ const BottomNavigation = ({ initState, setInitState, paymentTypeIndex, setPaymen
   };
 
   const addBulkPaymentInArray = () => {
-    setBulkPaymentArray((prev) => [...prev, makeData()]);
+    setBulkPaymentArray((prev) => [...prev, makeBulkData()]);
   };
-
-  console.log(bulkpaymentarray);
 
   return (
     <div className='w-full mt-2 flex justify-around mb-8'>
@@ -391,6 +539,11 @@ const BottomNavigation = ({ initState, setInitState, paymentTypeIndex, setPaymen
       >
         Submit
       </button>
+      {showModal && (
+        <div className='fixed top-0 left-0 w-full h-full flex items-center justify-center'>
+          <Modal showModal={showModal} setShowModal={setShowModal} testLink={testLink} />
+        </div>
+      )}
     </div>
   );
 };

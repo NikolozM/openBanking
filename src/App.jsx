@@ -4,9 +4,12 @@ import SecondaryQuestions from './components/SecondaryQuestions';
 import ShouldNotFilledFields from './components/ShouldNotFilledFields';
 import Navbar from './components/Navbar';
 import BottomNavigation from './components/shared/BottomNavigation';
+import LoaderWithApi from './components/shared/Loader';
 
 export default function App() {
   const [paymentTypeIndex, setPaymentTypeIndex] = useState(null);
+
+  const [load, setLoad] = useState(false);
 
   const [initState, setInitState] = useState({
     // MainQuestions Section
@@ -88,17 +91,18 @@ export default function App() {
   };
 
   return (
-    <main className='min-h-screen bg-gradient-to-b from-gradiant-start to-gradiant-end p-12 '>
-      <div className='bg-bg-color1 w-9/12 flex flex-col items-center m-auto shadow-md shadow-stone-300 rounded-xl'>
+    <main className='min-h-screen bg-gradient-to-b from-gradiant-start to-gradiant-end p-12 flex items-center'>
+      <LoaderWithApi loader={load}>
         <Navbar sectionId={sectionId} setSectionId={setSectionId} />
         <section className='w-full p-4'>{renderComponent(sectionId)}</section>
         <BottomNavigation
+          setLoad={setLoad}
           initState={initState}
           setInitState={setInitState}
           paymentTypeIndex={paymentTypeIndex}
           setPaymentTypeIndex={setPaymentTypeIndex}
         />
-      </div>
+      </LoaderWithApi>
     </main>
   );
 }
