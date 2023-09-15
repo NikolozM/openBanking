@@ -10,7 +10,8 @@ const BottomNavigation = ({ initState, setInitState, paymentTypeIndex, setPaymen
   // only Bulkpayments should be in array, so we store it only this time
   const [bulkpaymentarray, setBulkPaymentArray] = useState([]);
   const [showModal, setShowModal] = useState(false);
-
+  const [currentDate, setCurrentDate] = useState(new Date());
+  const formattedDate = currentDate.toISOString().split('T')[0];
   const [testLink, setTestLink] = useState(null);
 
   const makeDataForBulk = () => {
@@ -20,7 +21,7 @@ const BottomNavigation = ({ initState, setInitState, paymentTypeIndex, setPaymen
         iban: 'GE61PC0133600100071105',
         currency: 'GEL',
       },
-      requestedExecutionDate: '2023-09-14',
+      requestedExecutionDate: formattedDate,
       payments: bulkpaymentarray,
     };
     return data;
@@ -57,8 +58,6 @@ const BottomNavigation = ({ initState, setInitState, paymentTypeIndex, setPaymen
       creditorNameAndAddress: initState.creditorNameAndAddress,
       currencyOfTransfer: initState.currencyOfTransfer,
 
-      debtorId: initState.debtorId,
-
       // debtorAccount: {
       //   iban: initState.debtorAccountIban,
       //   currency: initState.debtorAccountCurrency,
@@ -74,6 +73,7 @@ const BottomNavigation = ({ initState, setInitState, paymentTypeIndex, setPaymen
         },
       },
 
+      debtorId: initState.debtorId,
       debtorName: initState.debtorName,
       endToEndIdentification: initState.endToEndIdentification,
       exchangeRateInformation: {

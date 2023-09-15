@@ -18,20 +18,22 @@ export const Modal = ({ showModal, setShowModal, confirmation, input }) => {
           {/* <div className='text-xl font-bold mb-4'>
             Modal Title
           </div> */}
-          <p>This is the modal content.</p>
+          <div>
+            <p className='mt-4 mb-8 font-Palanquin text-xl font-medium'>Type info and add into array</p>
 
-          {input && (
-            <div>
-              <input
-                className='input'
-                id='70'
-                type='text'
-                placeholder='...'
-                value={value}
-                onChange={(e) => setValue(e.target.value)}
-              />
-            </div>
-          )}
+            {input && (
+              <div>
+                <input
+                  className='input'
+                  id='70'
+                  type='text'
+                  placeholder='...'
+                  value={value}
+                  onChange={(e) => setValue(e.target.value)}
+                />
+              </div>
+            )}
+          </div>
 
           <div className='flex justify-end'>
             <button
